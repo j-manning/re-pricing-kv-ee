@@ -1,36 +1,50 @@
 # re-pricing-kv-ee
 
-Weekly scraper for **KV.ee** listing fees (Estonia).
+Weekly scraper for **KV.ee** pricing (Estonia).
 
 ## Platform
 
 KV.ee is Estonia's leading real estate portal, operated by Baltics Classifieds Group (BCG).
-BCG also operates City24.ee — included in the Pro agency package.
+BCG also operates City24.ee — included in higher agency packages.
 
 ## Pricing Model
 
-**Per-listing fee** for individual sellers (publicly listed):
+KV.ee is an **agency subscription** model. Individual seller base listing fees are not publicly listed.
 
-| Tier | Listing Type | Fee (EUR) |
-|------|-------------|-----------|
-| Individual — Sales | Property for sale | €44.99 |
-| Individual — Rental | Property for rent | €24.99 |
+### Agency Subscriptions (per month, broker account)
 
-Agency packages are available but pricing is not publicly listed — contact sales.
+| Tier | Fee (EUR/month) |
+|------|----------------|
+| Broker S | €79 |
+| Broker M | €139 |
+| Broker L | €189 |
+| Broker XL | €239 |
+| Broker XXL | €289 |
+| Broker XXXL | €329 |
 
-- `fee_period = per_listing`
+### Boost / Add-on Services
+
+| Service | Fee (EUR) | Period |
+|---------|-----------|--------|
+| Star rating | €1.49 | per_day |
+| Front page placement | €9.99 | per_day |
+| Date refresh + e-Agent | €3.99 | per_listing |
+| Client day (open house) | €5.00 | per_listing |
+
 - `currency = EUR`
-- `hybrid_note`: "BCG platform; City24.ee included in Pro agency package. Agency pricing: contact sales."
+- Prices valid from 01.10.2025
 
 Source: [KV.ee liitumine](https://www.kv.ee/liitumine)
 
-## Output
+## Note on Individual Seller Pricing
 
-`data/pricing.csv` — 2 rows per scrape date (individual seller tiers only).
+Base listing fees for private sellers are not published on the public pricing page.
+KV.ee monetises primarily through agency subscriptions.
 
 ## Running Locally
 
 ```bash
 pip install -r requirements.txt
+playwright install chromium
 python scraper.py
 ```
